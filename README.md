@@ -1,5 +1,5 @@
 # sugar
-more simple logger packaged sugared [zap](https://github.com/uber-go/zap).
+more simple logger which package sugared [zap](https://github.com/uber-go/zap).
 
 
 ## something you should know
