@@ -26,7 +26,7 @@ func (l *Logger) With(args ...interface{}) {
 	l.zapSugar = l.zapSugar.With(args...)
 }
 
-// Debug
+// Debug package sugar of zap
 func (l *Logger) Debug(args ...interface{}) {
 	l.zapSugar.Debug(args...)
 }
@@ -58,7 +58,7 @@ func (l *Logger) Warnf(template string, args ...interface{}) {
 
 // Error package sugar of zap
 func (l *Logger) Error(args ...interface{}) {
-	l.zapSugar.Warn(args...)
+	l.zapSugar.Error(args...)
 }
 
 // Errorf package sugar of zap
@@ -68,7 +68,7 @@ func (l *Logger) Errorf(template string, args ...interface{}) {
 
 // Fatal package sugar of zap
 func (l *Logger) Fatal(args ...interface{}) {
-	l.zapSugar.Warn(args...)
+	l.zapSugar.Fatal(args...)
 }
 
 // Fatalf package sugar of zap

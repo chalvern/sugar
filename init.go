@@ -11,13 +11,17 @@ var mainLogger *Logger
 
 func init() {
 	config := zap.NewDevelopmentConfig()
-	initSugarWith(&config)
+	config.OutputPaths = []string{"stderr"}
+	config.ErrorOutputPaths = []string{"stderr"}
+	SetSugar(&config)
 }
 
 // InitProductionSugar for production
 func InitProductionSugar(opts ...zap.Option) {
 	config := zap.NewProductionConfig()
-	initSugarWith(&config, opts...)
+	config.OutputPaths = []string{"stderr"}
+	config.ErrorOutputPaths = []string{"stderr"}
+	SetSugar(&config, opts...)
 }
 
 // InitDevelopmentSugar for development
@@ -26,25 +30,18 @@ func InitProductionSugar(opts ...zap.Option) {
 func InitDevelopmentSugar(opts ...zap.Option) {
 	config := zap.NewDevelopmentConfig()
 	config.Encoding = "json"
-	initSugarWith(&config, opts...)
-	zap.NewProduction()
-}
-
-// initSugarWith init Sugar
-func initSugarWith(config *zap.Config, opts ...zap.Option) {
 	config.OutputPaths = []string{"stderr"}
 	config.ErrorOutputPaths = []string{"stderr"}
+	SetSugar(&config, opts...)
+}
 
+// SetSugar set sugar's logger
+func SetSugar(config *zap.Config, opts ...zap.Option) {
 	opts = append(opts, zap.AddCallerSkip(1))
 	zapLogger, err := config.Build(opts...)
 	if err != nil {
 		panic(err)
 	}
-	SetSugar(zapLogger.Sugar())
-}
-
-// SetSugar set sugar's logger
-func SetSugar(zs *zap.SugaredLogger) {
-	zapSugar = zs
+	zapSugar = zapLogger.Sugar()
 	mainLogger = NewLoggerOf("main")
 }
