@@ -1,2 +1,2 @@
-# zlog
-more simple logger packaged zap
+# sugar
+more simple logger packaged sugared [zap](https://github.com/uber-go/zap).
