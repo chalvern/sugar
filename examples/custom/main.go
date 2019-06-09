@@ -12,4 +12,12 @@ func main() {
 	sugar.SetSugar(&config)
 
 	sugar.Info("main info")
+
+	myCustomLogger()
+}
+
+func myCustomLogger() {
+	myLogger := sugar.NewLoggerOf("my_custom_logger")
+	myLogger.Info("log of myCustomLogger info")
+	myLogger.Warn("log of myCustomLogger warn")
 }
