@@ -10,7 +10,8 @@ var zapSugar *zap.SugaredLogger
 var mainLogger *Logger
 
 func init() {
-	InitDevelopmentSugar()
+	config := zap.NewDevelopmentConfig()
+	initSugarWith(&config)
 }
 
 // InitProductionSugar for production
@@ -20,10 +21,13 @@ func InitProductionSugar(opts ...zap.Option) {
 }
 
 // InitDevelopmentSugar for development
+// encoding being json instead of console,
+// which is practically better for docker's json logger,
 func InitDevelopmentSugar(opts ...zap.Option) {
-	// set sugar for production
 	config := zap.NewDevelopmentConfig()
+	config.Encoding = "json"
 	initSugarWith(&config, opts...)
+	zap.NewProduction()
 }
 
 // initSugarWith init Sugar
