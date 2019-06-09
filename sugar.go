@@ -1,10 +1,5 @@
 package sugar
 
-// Error package mainLogger
-func Error(args ...interface{}) {
-	mainLogger.zapSugar.Error(args...)
-}
-
 // Debug package mainLogger
 func Debug(args ...interface{}) {
 	mainLogger.zapSugar.Debug(args...)
@@ -33,6 +28,11 @@ func Warn(args ...interface{}) {
 // Warnf package mainLogger
 func Warnf(template string, args ...interface{}) {
 	mainLogger.zapSugar.Warnf(template, args...)
+}
+
+// Error package mainLogger
+func Error(args ...interface{}) {
+	mainLogger.zapSugar.Error(args...)
 }
 
 // Errorf package mainLogger

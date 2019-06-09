@@ -8,6 +8,17 @@ more simple logger which package sugared [zap](https://github.com/uber-go/zap).
 * `InitDevelopmentSugar()` set encoding being json instead of console,  which is practically better for docker's json logger plugin.
 
 
+## leveled Method
+
+all methods of zap:
+
+* Debug/Debugf
+* Info/Infof
+* Warn/Warnf
+* Error/Errorf
+* Fatal/Fatalf
+* Panic/Panicf
+
 ## example
 
 you can find example in [examples](./examples).
