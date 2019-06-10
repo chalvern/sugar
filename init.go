@@ -4,10 +4,17 @@ import (
 	"go.uber.org/zap"
 )
 
-var zapSugar *zap.SugaredLogger
+var (
+	zapLogger *zap.Logger
+	zapSugar  *zap.SugaredLogger
+	// mainLogger default logger, with unit filed valued "main"
+	mainLogger *Logger
+)
 
-// mainLogger default logger, with unit filed valued "main"
-var mainLogger *Logger
+// GetZapLogger get zap's logger for special using
+func GetZapLogger() *zap.Logger {
+	return zapLogger
+}
 
 func init() {
 	config := zap.NewDevelopmentConfig()
@@ -38,7 +45,8 @@ func InitDevelopmentSugar(opts ...zap.Option) {
 // SetSugar set sugar's logger
 func SetSugar(config *zap.Config, opts ...zap.Option) {
 	opts = append(opts, zap.AddCallerSkip(1))
-	zapLogger, err := config.Build(opts...)
+	var err error
+	zapLogger, err = config.Build(opts...)
 	if err != nil {
 		panic(err)
 	}
