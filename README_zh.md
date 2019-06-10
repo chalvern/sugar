@@ -1,6 +1,6 @@
 # sugar
 
-《[中文文档](./README_zh.md)》
+《[English README](./README.md)》
 
 Sugar 封装了 [zap](https://github.com/uber-go/zap) 日志库，让开发者能够更方便、快捷地使用这个插件。
 本库只是简单的封装，如果使用过程中遇到问题，推荐阅读 [zap](https://github.com/uber-go/zap) 的相关文档寻找答案。

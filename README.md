@@ -1,4 +1,7 @@
 # sugar
+
+《[中文文档](./README_zh.md)》
+
 more simple logger which package sugared [zap](https://github.com/uber-go/zap).
 Please learn [zap](https://github.com/uber-go/zap) first if you want advanced using.
 
