@@ -1,17 +1,23 @@
 # sugar
-more simple logger which package sugared [zap](https://github.com/uber-go/zap).
-Please learn [zap](https://github.com/uber-go/zap) first if you want advanced using.
+
+《[中文文档](./README_zh.md)》
+
+Sugar 封装了 [zap](https://github.com/uber-go/zap) 日志库，让开发者能够更方便、快捷地使用这个插件。
+本库只是简单的封装，如果使用过程中遇到问题，推荐阅读 [zap](https://github.com/uber-go/zap) 的相关文档寻找答案。
+
+当然，欢迎大家提 issue 来一起完善这个仓库。
 
 
-## something you should know
+## 一些注意点
 
-* sugar use `zap.NewDevelopmentConfig()` as default config, which use console as encoding style,
-* `InitDevelopmentSugar()` set encoding being json instead of console,  which is practically better for docker's json logger plugin.
+* Sugar 使用 zap 仓库的 `zap.NewDevelopmentConfig()` 方法返回的配置作为默认配置（开发环境），这个配置使用 console 类型的输出格式（平铺的那种，区别于 json 类型的日志）
+* 我曾经的工作阅历，认为服务容器化会是未来的趋势，因此认为开发环境也有必要配置 json 格式的输出，通过 `InitDevelopmentSugar()` 可以达到目的。
+* 开发环境默认就是 json 格式，主要是为了方便地把日志收集到 ELK 中去。
 
 
-## Leveled method
+## 方法
 
-all methods of zap:
+Sugar 封装了 sugared-zap 的所有方法，如下（如果有疏漏，可以提 issue 通知我）：
 
 * Debug/Debugf
 * Info/Infof
@@ -20,11 +26,14 @@ all methods of zap:
 * Fatal/Fatalf
 * Panic/Panicf
 
-## logs looking
-I recommend zap mostly because of its beautiful logs looking.
 
-### looking #1
-Development mode with console style printing.
+## logs 格式预先看
+
+我之所以喜欢使用 zap，主要因为它漂亮的输出格式（根据官方的描述，它的输出效率也很高，不过我还没有遇到这个瓶颈）
+
+### 默认的开发模式
+
+这种模式的输出是 console 样式，就是说日志平铺展示（开发模式也可以配置 json 格式的输出，见 [一些注意点](#一些注意点)。
 
 ```bash
 2019-06-10T09:13:03.672+0800    DEBUG   default/main.go:7       default development sugar of chalvern   {"unit": "main"}
@@ -52,7 +61,7 @@ runtime.main
 
 ### looking #2
 
-Production mode with json style printing (Development mode can also has json stype printing, more see [something you should know](#something-you-should-know) )
+生产模式默认是 json 格式的输出，从而方便把日志收集起来集中处理。
 
 ```json
 {"level":"info","ts":1560129183.672966,"caller":"default/main.go:13","msg":"default production sugar of chalvern","unit":"main"}
@@ -62,12 +71,12 @@ Production mode with json style printing (Development mode can also has json sty
 {"level":"warn","ts":1560129183.673182,"caller":"default/main.go:27","msg":"log of myCustomLogger2 warn","unit":"my_custom_logger_2"}
 ```
 
-## example
+## 例子
 
-you can find example in [examples](./examples).
+下面的例子也可以在 [examples](./examples) 目录找到。
 
 
-### default sugar
+### 默认配置
 ```go
 // cat ./examples/default/main.go
 package main
@@ -100,7 +109,7 @@ func myCustomLogger2() {
 }
 ```
 
-### custom sugar
+### 定制化配置
 
 ```go
 package main
