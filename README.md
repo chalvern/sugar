@@ -52,7 +52,7 @@ runtime.main
 
 ### looking #2
 
-Production mode with json style printing.
+Production mode with json style printing (Development mode can also has json stype printing, more see [something you should know](#something-you-should-know) )
 
 ```json
 {"level":"info","ts":1560129183.672966,"caller":"default/main.go:13","msg":"default production sugar of chalvern","unit":"main"}
