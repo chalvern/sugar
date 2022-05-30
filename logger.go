@@ -22,9 +22,8 @@ func NewLoggerOf(component string) *Logger {
 
 // With adds a variadic number of fields to the logging context.
 // see https://github.com/uber-go/zap/blob/v1.10.0/sugar.go#L91
-func (l *Logger) With(args ...interface{}) *Logger {
-	l.zapSugar = l.zapSugar.With(args...)
-	return l
+func (l *Logger) With(args ...interface{}) *zap.SugaredLogger {
+	return l.zapSugar.With(args...)
 }
 
 // Debug package sugar of zap
