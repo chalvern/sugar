@@ -19,12 +19,12 @@ Sugar 封装了 [zap](https://github.com/uber-go/zap) 日志库，让开发者�
 
 Sugar 封装了 sugared-zap 的所有方法，如下（如果有疏漏，可以提 issue 通知我）：
 
-* Debug/Debugf
-* Info/Infof
-* Warn/Warnf
-* Error/Errorf
-* Fatal/Fatalf
-* Panic/Panicf
+* Debug/Debugf/Debugw
+* Info/Infof/Infow
+* Warn/Warnf/Warnw
+* Error/Errorf/Errorw
+* Fatal/Fatalf/Fatalw
+* Panic/Panicf/Panicw
 
 
 ## logs 格式预先看

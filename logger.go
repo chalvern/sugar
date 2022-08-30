@@ -36,6 +36,11 @@ func (l *Logger) Debugf(template string, args ...interface{}) {
 	l.zapSugar.Debugf(template, args...)
 }
 
+// Debugw package sugar of zap
+func (l *Logger) Debugw(msg string, keysAndValues ...interface{}) {
+	l.zapSugar.Debugw(msg, keysAndValues...)
+}
+
 // Info package sugar of zap
 func (l *Logger) Info(args ...interface{}) {
 	l.zapSugar.Info(args...)
@@ -44,6 +49,11 @@ func (l *Logger) Info(args ...interface{}) {
 // Infof package sugar of zap
 func (l *Logger) Infof(template string, args ...interface{}) {
 	l.zapSugar.Infof(template, args...)
+}
+
+// Infow package sugar of zap
+func (l *Logger) Infow(msg string, keysAndValues ...interface{}) {
+	l.zapSugar.Infow(msg, keysAndValues...)
 }
 
 // Warn package sugar of zap
@@ -56,6 +66,11 @@ func (l *Logger) Warnf(template string, args ...interface{}) {
 	l.zapSugar.Warnf(template, args...)
 }
 
+// Warnw package sugar of zap
+func (l *Logger) Warnw(msg string, keysAndValues ...interface{}) {
+	l.zapSugar.Warnw(msg, keysAndValues...)
+}
+
 // Error package sugar of zap
 func (l *Logger) Error(args ...interface{}) {
 	l.zapSugar.Error(args...)
@@ -64,6 +79,11 @@ func (l *Logger) Error(args ...interface{}) {
 // Errorf package sugar of zap
 func (l *Logger) Errorf(template string, args ...interface{}) {
 	l.zapSugar.Errorf(template, args...)
+}
+
+// Errorw package sugar of zap
+func (l *Logger) Errorw(msg string, keysAndValues ...interface{}) {
+	l.zapSugar.Errorw(msg, keysAndValues...)
 }
 
 // Fatal package sugar of zap
@@ -76,6 +96,11 @@ func (l *Logger) Fatalf(template string, args ...interface{}) {
 	l.zapSugar.Fatalf(template, args...)
 }
 
+// Fatalw package sugar of zap
+func (l *Logger) Fatalw(msg string, keysAndValues ...interface{}) {
+	l.zapSugar.Fatalw(msg, keysAndValues...)
+}
+
 // Panic package sugar of zap
 func (l *Logger) Panic(args ...interface{}) {
 	l.zapSugar.Panic(args...)
@@ -84,4 +109,9 @@ func (l *Logger) Panic(args ...interface{}) {
 // Panicf package sugar of zap
 func (l *Logger) Panicf(template string, args ...interface{}) {
 	l.zapSugar.Panicf(template, args...)
+}
+
+// Panicw package sugar of zap
+func (l *Logger) Panicw(msg string, keysAndValues ...interface{}) {
+	l.zapSugar.Panicw(msg, keysAndValues...)
 }
